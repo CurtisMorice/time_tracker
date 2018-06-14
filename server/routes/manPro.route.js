@@ -23,11 +23,11 @@ router.get('/', function(req, res) {
 router.post('/', (req, res) => {
     console.log('In manPro POST router ', req.body);
     let newEntry = req.body;
-    const queryText = `INSERT INTO projects ("project","hours")
-VALUES($1, $2,);`;
-    pool.query(queryText, [newEntry.entry, newEntry.project, newEntry.date, newEntry.hours])
+    const queryText = `INSERT INTO projects ("project")
+VALUES($1);`;
+    pool.query(queryText, [newEntry.project])
         .then((result) => {
-            console.log(`successful adding of new Entry!`, req.body);
+            console.log(`successful adding of newEntry aka req.body!`, newEntry);
             res.sendStatus(200);
         })
         .catch((error) => {
@@ -38,7 +38,7 @@ VALUES($1, $2,);`;
 
 router.put('/', (req, res) => {
     const entryId = req.params.id;
-    console.log('in manPro PUT to update');
+    console.log('in manPro.route PUT to update');
     const queryText = 'UPDATE projects WHERE id-$1';
     poll.query(queryText, [entryId])
         .then((result) => {
@@ -51,7 +51,7 @@ router.put('/', (req, res) => {
 
 router.delete('/:id', (req, res) => {
     const entryId = req.params.id;
-    console.log('In manPro DELETE router ', req.params.id);
+    console.log('In manPro.route DELETE router ', req.params.id);
     const queryText = 'DELETE FROM projects WHERE id=$1';
     pool.query(queryText, [entryId])
         .then((result) => {

@@ -23,11 +23,11 @@ router.get('/', function(req, res) {
 router.post('/', (req, res) => {
     console.log('In TimeEntry POST router ', req.body);
     let newEntry = req.body;
-    const queryText = `INSERT INTO entries ("entry", "project", "date", "hours")
-VALUES($1, $2, $3, $4);`;
-    pool.query(queryText, [newEntry.entry, newEntry.project, newEntry.date, newEntry.hours])
+    const queryText = `INSERT INTO entries ("project_id", "date", "hours")
+VALUES($1, $2, $3);`;
+    pool.query(queryText, [newEntry.project_id, newEntry.date, newEntry.hours])
         .then((result) => {
-            console.log(`successful adding of new Entry!`, req.body);
+            console.log(`successful adding of newEntry aka the req.body!`, req.body);
             res.sendStatus(200);
         })
         .catch((error) => {
@@ -51,7 +51,7 @@ router.put('/', (req, res) => {
 
 router.delete('/:id', (req, res) => {
     const entryId = req.params.id;
-    console.log('In hero DELETE router ', req.params.id);
+    console.log('In timeEntry.route DELETE ', req.params.id);
     const queryText = 'DELETE FROM entries WHERE id=$1';
     pool.query(queryText, [entryId])
         .then((result) => {
