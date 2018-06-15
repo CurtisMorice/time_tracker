@@ -36,12 +36,12 @@ TimeApp.controller('AddController', ['TimeService', 'NgTableParams', function(Ti
     };
 
     self.deleteEntries = function() {
-        TimeService.deleteTime(Entries.id)
+        TimeService.deleteTime(entries.id)
             .then(function() {
                 self.displayEntries();
             }).catch(function(err) {
                 console.log(`error in deleteEntries in manPro.controller`, err);
             });
     };
-
+    self.displayEntries();
 }]);

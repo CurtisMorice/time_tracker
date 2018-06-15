@@ -1,20 +1,25 @@
-<md-toolbar>
-    <H3 class="toolbar">MANAGE YOUR PROJECTS HERE</H3>
-</md-toolbar>
+<div ng-controller="ManageController as vm">
+    <md-toolbar>
+        <H1 class="toolbar">MANAGE YOUR PROJECTS HERE</H1>
+    </md-toolbar>
 
-<input type="text" placeholder="What did you do?">
-<input type="text" placeholder="What did you do?">
-<input type="text" placeholder="What did you do?">
+    <input type="text" placeholder="What did you do?">
+    <input type="text" placeholder="What did you do?">
+    <input type="text" placeholder="What did you do?">
 
-<table ng-table="vm.tableParams " class="table" show-filter="true">
 
-    <tr ng-repeat="entry in vm.displayEntries">
-        <td title="'Name'" filter="{ name: 'text'}" sortable="'name'">
-            {{entry.project_id}}</td>
-        <td title="'Age'" filter="{ age: 'number'}" sortable="'age'">
-            {{entry.date}}</td>
-        <td title="'Age'" filter="{ age: 'number'}" sortable="'age'">
-            {{entry.hours}}</td>
-    </tr>
+    <table ng-table="vm.tableParams " class="table" show-filter="true">
 
-</table>
+        <tr ng-repeat="entry in vm.getProjectsArray">
+            <td title="'Project'" filter="{ project: 'text'}" sortable="'project'">
+                {{entry.project_id}}</td>
+            <td title="'Date'" filter="{ date: 'number'}" sortable="'date'">
+                {{entry.date}}</td>
+            <td title="'Hours'" filter="{ hours: 'number'}" sortable="'Hours'">
+                {{entry.hours}}</td>
+
+        </tr>
+        <td><input type="button" value="Insert" ng-click="addProject()"></td>
+
+    </table>
+</div>

@@ -4,9 +4,6 @@ let TimeApp = angular.module('TimeApp', ['ngMaterial', 'ngRoute', 'ngTable'])
     });
 
 
-
-
-
 TimeApp.config(function($routeProvider, $mdThemingProvider) {
 
     $mdThemingProvider.theme('default')

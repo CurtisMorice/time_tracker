@@ -10,8 +10,13 @@
 .toolbar {
     text-align: center;
     height: 100px;
-    color: rgba(53, 72, 78, 0.24);
-    background-color: powderblue;
+    color: rgba(0, 0, 0, 0.24);
+}
+
+.home1 {
+    text-align: center;
+    height: 100px;
+    color: rgba(0, 0, 0, 0.24);
 }
 
 .navigation li {

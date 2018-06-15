@@ -2,11 +2,12 @@ TimeApp.service('TimeService', function($http) {
 
 
     console.log(`in TimeService`);
+
     let self = this;
     let TimeArray = [];
 
     self.getTime = function(url) {
-        console.log(`in GET super service`);
+        console.log(`in GET time service`);
         return $http({
             method: 'GET',
             url: `/${url}`
@@ -15,7 +16,7 @@ TimeApp.service('TimeService', function($http) {
             console.log(`${url}`);
             self.TimeArray = response.data;
         }).catch((error) => {
-            console.log(`error getting all super:`, error);
+            console.log(`error getting all timeStuff:`, error);
         });
 
     };
@@ -63,9 +64,9 @@ TimeApp.service('TimeService', function($http) {
             }).catch(function(error) {
                 console.log('Error from DELETE', error);
 
-            })
-        }
+            });
+        };
 
-    }
+    };
 
 });

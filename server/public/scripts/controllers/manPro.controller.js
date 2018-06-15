@@ -3,7 +3,7 @@ TimeApp.controller('ManageController', ['TimeService', 'NgTableParams', function
 
     let self = this;
 
-    let data = [{ project: 'dishes', date: '1/12/2018', hours: 3 } /*,*/ ];
+    let data = [{ project: 'dishes', date: '1/12/2018', hours: 3 }, { project: 'dishes', date: '1/12/2018', hours: 3 }, { project: 'dishes', date: '1/12/2018', hours: 3 }, { project: 'dishes', date: '1/12/2018', hours: 3 }];
     self.tableParams = new NgTableParams({ count: data.length }, { dataset: data, counts: [] });
 
     class Projects {
@@ -40,5 +40,5 @@ TimeApp.controller('ManageController', ['TimeService', 'NgTableParams', function
             console.log(`error in deleteProjects in manPro.controller`, err);
         });
     };
-
+    self.displayProjects();
 }]);

@@ -11,7 +11,7 @@ const home = require('./routes/home.route.js');
 //uses 
 app.use(bodyParser.json());
 app.use(express.static('server/public'));
-app.use('/manPro', manPro);
+app.use('/projects', manPro);
 app.use('/timeEntry', timeEntry);
 app.use('/home', home);
 //ports
