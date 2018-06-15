@@ -7,21 +7,45 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="vendors/angular.min.js"></script>
     <script src="vendors/angular-route.min.js"></script>
-    <script src="scripts/client.js"></script>
-    <link rel="stylesheet" href="vendors/bootstrap.css">
-    <link rel="stylesheet" href="style.css">
-
-    <title>Document</title>
-</head>
-
-<body ng-app="TimeApp">
-    // ng-material scripts
-    <script src="vendors/angular-material.min.js"></script>
     <script src="vendors/angular-animate.min.js"></script>
     <script src="vendors/angular-aria.min.js"></script>
     <script src="vendors/angular-messages.min.js"></script>
-    // ng-material scripts and its dependencies
+    <script src="vendors/angular-material.min.js"></script>
+    <script src="vendors/ng-table.min.js"></script>
+    <script src="scripts/client.js"></script>
+    <script src="scripts/services/time.service.js"></script>
+    <script src="scripts/controllers/home.controller.js"></script>
+    <script src="scripts/controllers/manPro.controller.js"></script>
+    <script src="scripts/controllers/timeEntry.controller.js"></script>
 
-    < </body>
+    <link rel="stylesheet" href="vendors/angular-material.css">
+    <link rel="stylesheet" href="vendors/ng-table.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>TIME APP</title>
+</head>
+
+<body ng-app="TimeApp">
+
+    <md-toolbar class="toolbar">
+        <div>
+            <h1 class="time">TIME ENTRY APPLICATION</h1>
+        </div>
+    </md-toolbar>
+
+    <ul class="navigation">
+        <li>
+            <a class="home" href="#!home"> <em>HOME</em></a>
+        </li>
+        <li>
+            <a class="time" href="#!entries"> <em> TIME ENTRY</em></a>
+        </li>
+        <li>
+            <a class="time" href="#!manPro"> <em> MANAGE PROJECTS</em></a>
+        </li>
+    </ul>
+
+
+    <ng-view></ng-view>
+</body>
 
 </html>

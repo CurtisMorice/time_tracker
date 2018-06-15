@@ -1,11 +1,10 @@
-<md-toolbar>
-    <h1 class="toolbar"> TIME TRACKER</h1>
+<md-toolbar class="toolbar">
+    <h1 class="home1">HOME PAGE</h1>
 </md-toolbar>
 
-<input type="text" layout="row" placeholder="What did you do?">
-<input type="text" layout="row" placeholder="What did you do?">
-<input type="text" layout="row" placeholder="What did you do?">
-<input type="text" layout="row" placeholder="What did you do?">
+<input type="text" placeholder="What did you do?">
+<input type="text" placeholder="What did you do?">
+<input type="text" placeholder="What did you do?">
 
 <table ng-table="vm.tableParams" class="table" show-filter="true">
     <tr ng-repeat="entry in vm.displayEntries">

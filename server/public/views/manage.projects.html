@@ -1,0 +1,20 @@
+<md-toolbar>
+    <H3 class="toolbar">MANAGE YOUR PROJECTS HERE</H3>
+</md-toolbar>
+
+<input type="text" placeholder="What did you do?">
+<input type="text" placeholder="What did you do?">
+<input type="text" placeholder="What did you do?">
+
+<table ng-table="vm.tableParams " class="table" show-filter="true">
+
+    <tr ng-repeat="entry in vm.displayEntries">
+        <td title="'Name'" filter="{ name: 'text'}" sortable="'name'">
+            {{entry.project_id}}</td>
+        <td title="'Age'" filter="{ age: 'number'}" sortable="'age'">
+            {{entry.date}}</td>
+        <td title="'Age'" filter="{ age: 'number'}" sortable="'age'">
+            {{entry.hours}}</td>
+    </tr>
+
+</table>

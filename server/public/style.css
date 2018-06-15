@@ -1,0 +1,32 @@
+/* body {
+    background-color: #969a537d;
+} */
+
+.time {
+    text-align: center;
+    color: rgba(35, 120, 146, 0.24);
+}
+
+.toolbar {
+    text-align: center;
+    height: 100px;
+    color: rgba(53, 72, 78, 0.24);
+    background-color: powderblue;
+}
+
+.navigation li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow-wrap: break-word;
+    background-color: rgb(109, 80, 80);
+}
+
+.navigation li a {
+    display: block;
+    color: 0c0c0c;
+    text-shadow: powderblue;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}

@@ -1,7 +1,11 @@
-TimeApp.controller('ManageController', ['TimeService', function(TimeService) {
+TimeApp.controller('ManageController', ['TimeService', 'NgTableParams', function(TimeService, NgTableParams) {
 
 
     let self = this;
+
+    let data = [{ project: 'dishes', date: '1/12/2018', hours: 3 } /*,*/ ];
+    self.tableParams = new NgTableParams({ count: data.length }, { dataset: data, counts: [] });
+
     class Projects {
         constructor(projects) {
             this.projects = projects;
