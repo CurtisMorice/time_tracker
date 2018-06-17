@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 
 const timeEntry = require('./routes/timeEntry.route.js');
 const manPro = require('./routes/manPro.route.js');
-const home = require('./routes/home.route.js');
+const home = require('./routes/chart.route.js');
 
 //uses 
 app.use(express.static('server/public'));
@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 
 app.use('/projects', manPro);
 app.use('/entries', timeEntry);
-app.use('/home', home);
+app.use('/chart', home);
 //ports
 const port = process.env.PORT || 5000;
 app.listen(port, function() {

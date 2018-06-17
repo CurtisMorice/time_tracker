@@ -17,7 +17,7 @@ h1 a {
     margin-bottom: 0;
 }
 
-.home {
+.chart {
     color: black;
     font-family: 'Shrikhand', cursive;
     text-shadow: 9px 12px 2px rgba(188, 188, 188, 0.36);
@@ -39,6 +39,12 @@ h1 a {
     text-shadow: 9px 12px 2px rgba(188, 188, 188, 0.36);
     letter-spacing: 1px;
     margin-bottom: 0;
+}
+
+.chart,
+.manage,
+.time {
+    margin: 70px;
 }
 
 #homeBar {

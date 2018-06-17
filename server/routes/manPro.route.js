@@ -2,7 +2,7 @@ const router = require('express').Router();
 const pool = require('../modules/pool');
 
 router.get('/', function(req, res) {
-    const queryText = 'SELECT * FROM projects ORDER BY id DESC;';
+    const queryText = 'SELECT projects.id, project, SUM(hours) as hours FROM projects LEFT JOIN entries on project_id = projects.id GROUP BY projects.id ORDER BY projects.id ASC;';
     pool.query(queryText).then((result) => {
         res.send(result.rows);
     }).catch((err) => {
@@ -43,7 +43,7 @@ router.put('/', (req, res) => {
 router.delete('/:id', (req, res) => {
     const entryId = req.params.id;
     console.log('In manPro.route DELETE router ', req.params.id);
-    const queryText = 'DELETE FROM entries WHERE "id"=$1;';
+    const queryText = 'DELETE FROM projects WHERE "id"=$1;';
     pool.query(queryText, [entryId])
         .then((result) => {
             console.log(`successful DELETE of manPro`, result);

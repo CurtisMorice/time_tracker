@@ -35,14 +35,16 @@ TimeApp.controller('ManageController', ['TimeService', 'NgTableParams', function
         console.log(`in updateProject on manPro.controller`);
     };
 
-    self.deleteProjects = function() {
-        console.log('in deleteProjects', entry);
-        TimeService.deleteTime('projects')
-            .then(function() {
-                self.displayProjects();
-            }).catch(function(err) {
-                console.log(`error in deleteProjects in manPro.controller`, err);
-            });
+    self.deleteProjects = function(click) {
+        console.log('in deleteProjects', click.project.id);
+        if (confirm('You gonna Kill Me?')) {
+            TimeService.deleteTime('projects', click.project.id)
+                .then(function() {
+                    self.displayProjects();
+                }).catch(function(err) {
+                    console.log(`error in deleteProjects in manPro.controller`, err);
+                });
+        }
     };
     self.displayProjects();
 }]);

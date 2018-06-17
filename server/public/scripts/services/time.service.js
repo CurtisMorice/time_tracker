@@ -13,6 +13,7 @@ TimeApp.service('TimeService', function($http) {
             url: `/${url}`
         }).then((response) => {
             console.log(response);
+            console.log(response.data);
             self.TimeArray = response.data;
         }).catch((error) => {
             console.log(`error getting all timeStuff:`, error);

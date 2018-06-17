@@ -12,12 +12,12 @@ TimeApp.config(function($routeProvider, $mdThemingProvider) {
 
 
 
-    $routeProvider.when('/home', {
-        templateUrl: '/views/home.html',
-        controller: 'HomeController as vm'
-    }).when('/entries', {
+    $routeProvider.when('/', {
         templateUrl: '/views/add.entry.html',
         controller: 'AddController as vm'
+    }).when('/chart', {
+        templateUrl: '/views/chart.html',
+        controller: 'ChartController as vm'
     }).when('/manPro', {
         templateUrl: '/views/manage.projects.html',
         controller: 'ManageController as vm'

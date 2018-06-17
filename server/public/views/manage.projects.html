@@ -1,6 +1,6 @@
 <body ng-controller="ManageController as vm">
     <md-toolbar>
-        <h1 class="toolbar">MANAGE YOUR PROJECTS HERE</h1>
+        <h1 class="toolbar">MANAGE PROJECTS HERE</h1>
     </md-toolbar>
     <div>
         <input ng-model="vm.project" type="text" layout="row" placeholder="Project Name?">
@@ -11,14 +11,20 @@
     <div>
         <table ng-table="vm.tableParams" class="table table-bordered table-striped">
             <tr ng-repeat="project in vm.projects">
-                <td>{{$index+1}}</td>
-                <td title="'Project'">
-                    {{project.project}}</td>
-                <td title=" 'Hours'">
-                    {{project.project}}</td>
-                <td>
-                    <md-button type="button " ng-click="vm.deleteEntries(entry) ">Delete</md-button>
-                </td>
+                <md-input-container>
+                    <td title="'EDIT PROJECT'">
+                        <md-button class="background-primary-color white-text" type="button" ng-click="vm.updateEntries(this)">UPDATE</md-button>
+                    </td>
+                    <td>{{$index+1}}</td>
+                    <td title="'Project'">
+                        {{project.project}}</td>
+                    <td title=" 'Hours'">
+                        {{project.hours == null ? 0: project.hours;}}</td>
+                    <td title="'MISTAKE?'">
+                        <md-input-container>
+                            <md-button class="background-primary-color" type="button" ng-click="vm.deleteProjects(this)">PROJECTED</md-button>
+                        </md-input-container>
+                    </td>
             </tr>
         </table>
     </div>

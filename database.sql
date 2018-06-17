@@ -20,3 +20,5 @@ VALUES
 SELECT * FROM entries JOIN projects on project_id = projects.id;
 
 SELECT entry, date, hours, project, entries.id FROM entries JOIN projects on project_id = projects.id;
+
+SELECT projects.id, project, SUM(hours) FROM projects LEFT JOIN entries on project_id = projects.id GROUP BY projects.id ORDER BY projects.id ASC; 
