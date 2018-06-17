@@ -1,38 +1,29 @@
-<div ng-controller="HomeController as vm">
-    <md-toolbar class="toolbar">
-        <h1 class="home1">HOME PAGE</h1>
+<body ng-controller="HomeController as vm">
+    <md-toolbar>
+        <h1 class="toolbar">HOME PAGE</h1>
     </md-toolbar>
 
-    <input type="text" placeholder="What did you do?">
-    <input type="text" placeholder="What did you do?">
-    <input type="text" placeholder="What did you do?">
-
-    <h4>From Date</h4>
-    <p class="input-group">
-        <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt1" is-open="status1.opened" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
-        <span class="input-group-btn">
-        <button type="button" class="btn btn-default" ng-click="open1($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-      </span>
-    </p>
-    <h4>To Date</h4>
-    <p class="input-group">
-        <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt2" is-open="status2.opened" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
-        <span class="input-group-btn">
-        <button type="button" class="btn btn-default" ng-click="open2($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-      </span>
-    </p>
+    <!-- <input ng-model="vm.project_id" type="text" placeholder="What did you do?">
+    <md-datepicker ng-model="vm.date" placeholder="enter date" title="'Date'" filter="{ date: 'number'}" sortable="'date'"></md-datepicker>
+    <input ng-model="vm.hours" type="text" placeholder="What did you do?"> -->
 
 
-    <table ng-table="vm.tableParams" class="table" show-filter="true">
-        <tr ng-repeat="entry in vm.getEntriesArray">
-            <td title="'Project ID'" filter="{ project_id: 'number'}" sortable="'project_id'">
-                {{entry.project_id}}</td>
-            <td title="'Date'" filter="{ date: 'date.html'}" sortable="'date'">
-                {{entry.date}}</td>
-            <td title="'Hours'" filter="{ hours: 'number'}" sortable="'hours'">
-                {{entry.hours}}</td>
-        </tr>
-        <td><input type="button" value="Insert" ng-click="addProject()"></td>
 
-    </table>
-</div>
+    <div>
+        <table ng-table="vm.tableParams" show-filter="true" class="table table-bordered table-striped">
+            <tr ng-repeat="entry in vm.getEntriesArray">
+                <td>{{$index+1}}</td>
+                <td title="'Date'" filter="{entry: 'text'}">
+                    {{entry.entry}}</td>
+                <td title="'Date'" filter="{date: 'text'}">
+                    {{entry.date}}</td>
+                <td title=" 'Hours'" filter="{hours: 'number'} ">
+                    {{entry.hours}}</td>
+                <td title="'Project ID'" filter="{project_id: 'number'}">
+                    {{entry.project_id}}</td>
+                <td><button type="button" ng-click="vm.deleteEntries(entry)">Delete</button></td>
+
+            </tr>
+        </table>
+    </div>
+</body>

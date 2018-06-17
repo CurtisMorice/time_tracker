@@ -1,25 +1,29 @@
-<div ng-controller="ManageController as vm">
+<body ng-controller="ManageController as vm">
     <md-toolbar>
-        <H1 class="toolbar">MANAGE YOUR PROJECTS HERE</H1>
+        <h1 class="toolbar">MANAGE YOUR PROJECTS HERE</h1>
     </md-toolbar>
+    <div>
+        <input ng-model="vm.project" type="text" layout="row" placeholder="What did you do?">
+        <md-button ng-click="vm.addProject()">Add Project</md-button>
 
-    <input type="text" placeholder="What did you do?">
-    <input type="text" placeholder="What did you do?">
-    <input type="text" placeholder="What did you do?">
+    </div>
+    <div>
+        <table ng-table="vm.tableParams" show-filter="true" class="table table-bordered table-striped">
+            <tr ng-repeat="entry in vm.getEntriesArray">
+                <td>{{$index+1}}</td>
+                <td title="'What to Do'" filter="{project_id: 'number'}">
+                    {{entry.entry}}</td>
+                <td title="'Date'" filter="{date: 'text'}">
+                    {{entry.date}}</td>
+                <td title=" 'Hours' " filter="{hours: 'number'} ">
+                    {{entry.hours}}</td>
+                <td title="'Project ID'" filter="{project_id: 'number'}">
+                    {{entry.project_id}}</td>
+                <td>
+                    <md-button type="button" ng-click="vm.deleteEntries(entry)">Delete</md-button>
+                </td>
 
-
-    <table ng-table="vm.tableParams " class="table" show-filter="true">
-
-        <tr ng-repeat="entry in vm.getProjectsArray">
-            <td title="'Project'" filter="{ project: 'text'}" sortable="'project'">
-                {{entry.project_id}}</td>
-            <td title="'Date'" filter="{ date: 'number'}" sortable="'date'">
-                {{entry.date}}</td>
-            <td title="'Hours'" filter="{ hours: 'number'}" sortable="'Hours'">
-                {{entry.hours}}</td>
-
-        </tr>
-        <td><input type="button" value="Insert" ng-click="addProject()"></td>
-
-    </table>
-</div>
+            </tr>
+        </table>
+    </div>
+</body>

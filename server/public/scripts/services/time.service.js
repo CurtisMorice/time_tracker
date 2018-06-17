@@ -6,14 +6,13 @@ TimeApp.service('TimeService', function($http) {
     let self = this;
     let TimeArray = [];
 
-    self.getTime = function(url) {
-        console.log(`in GET time service`);
+    self.get = function(url) {
+        console.log(`in GET time service`, url);
         return $http({
             method: 'GET',
             url: `/${url}`
         }).then((response) => {
             console.log(response);
-            console.log(`${url}`);
             self.TimeArray = response.data;
         }).catch((error) => {
             console.log(`error getting all timeStuff:`, error);
@@ -23,6 +22,7 @@ TimeApp.service('TimeService', function($http) {
 
 
     self.postTime = function(url) {
+        console.log(`in postTime`, url);
 
         return $http({
             method: 'POST',
@@ -51,22 +51,20 @@ TimeApp.service('TimeService', function($http) {
         });
     };
 
-    self.deleteTime = function(url, TimeDelete) {
+    self.deleteTime = function(url, entry) {
         console.log('Delete!');
-        console.log(TimeDelete);
-        if (confirm('You gonna Kill Me?')) {
-            $http({
-                method: 'DELETE',
-                url: `/${url}/${TimeDelete}`
-            }).then(function(response) {
-                self.getSuper();
+        console.log(entry);
 
-            }).catch(function(error) {
-                console.log('Error from DELETE', error);
+        return $http({
+            method: 'DELETE',
+            url: `/${url}/${entry}`,
+        }).then((response) => {
+            self.get();
 
-            });
-        };
+        }).catch((error) => {
+            console.log('Error from DELETE', error);
 
+        });
     };
 
 });

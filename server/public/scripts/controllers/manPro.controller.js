@@ -2,17 +2,19 @@ TimeApp.controller('ManageController', ['TimeService', 'NgTableParams', function
 
 
     let self = this;
-
-    let data = [{ project: 'dishes', date: '1/12/2018', hours: 3 }, { project: 'dishes', date: '1/12/2018', hours: 3 }, { project: 'dishes', date: '1/12/2018', hours: 3 }, { project: 'dishes', date: '1/12/2018', hours: 3 }];
-    self.tableParams = new NgTableParams({ count: data.length }, { dataset: data, counts: [] });
-
     class Projects {
-        constructor(projects) {
-            this.projects = projects;
+        constructor(project) {
+            this.project = project;
+
         }
     }
+
+    let data = [{ project: 'Fix the Roof' }];
+    self.tableParams = new NgTableParams({ dataset: data }, { count: data.length, counts: [] });
+
+
     self.addProject = function() {
-        let newProjects = new Projects(self.projects);
+        let newProjects = new Projects(self.project);
         console.log(`in addProjects in manPro controller`, newProjects);
         TimeService.postTime(newProjects).then(function(result) {
             console.log(`successful addProject from manPro controller`, TimeService.postTime());
@@ -22,8 +24,8 @@ TimeApp.controller('ManageController', ['TimeService', 'NgTableParams', function
     };
     self.displayProjects = function() {
         console.log(`in displayProjects in manPro.controller`);
-        TimeService.getTime('projects').then(function() {
-            self.getProjectsArray = TimeService.TimeArray;
+        TimeService.get('entries').then(function() {
+            self.getEntriesArray = TimeService.TimeArray;
         }).catch(function(err) {
             console.log(`error in displayProjects in manPro.controller`);
         });
@@ -34,11 +36,13 @@ TimeApp.controller('ManageController', ['TimeService', 'NgTableParams', function
     };
 
     self.deleteProjects = function() {
-        TimeService.deleteTime(projects.id).then(function() {
-            self.displayProjects();
-        }).catch(function(err) {
-            console.log(`error in deleteProjects in manPro.controller`, err);
-        });
+        console.log('in deleteProjects', entry);
+        TimeService.deleteTime('entries')
+            .then(function() {
+                self.displayProjects();
+            }).catch(function(err) {
+                console.log(`error in deleteProjects in manPro.controller`, err);
+            });
     };
     self.displayProjects();
 }]);

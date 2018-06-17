@@ -7,8 +7,10 @@ let TimeApp = angular.module('TimeApp', ['ngMaterial', 'ngRoute', 'ngTable'])
 TimeApp.config(function($routeProvider, $mdThemingProvider) {
 
     $mdThemingProvider.theme('default')
-        .primaryPalette('cyan')
+        .primaryPalette('red')
         .accentPalette('light-blue');
+
+
 
     $routeProvider.when('/home', {
         templateUrl: '/views/home.html',

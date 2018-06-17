@@ -11,7 +11,6 @@
     <script src="vendors/angular-aria.min.js"></script>
     <script src="vendors/angular-messages.min.js"></script>
     <script src="vendors/angular-material.min.js"></script>
-    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
     <script src="vendors/ng-table.min.js"></script>
     <script src="scripts/client.js"></script>
     <script src="scripts/services/time.service.js"></script>
@@ -21,29 +20,29 @@
 
     <link rel="stylesheet" href="vendors/angular-material.css">
     <link rel="stylesheet" href="vendors/ng-table.min.css">
+    <link rel="stylesheet" href="vendors/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Shrikhand" rel="stylesheet">
     <title>TIME APP</title>
 </head>
 
 <body ng-app="TimeApp">
 
     <md-toolbar class="toolbar">
-        <div>
-            <h1 class="time">TIME ENTRY APPLICATION</h1>
-        </div>
+        <h1>TIME ENTRY APPLICATION</h1>
     </md-toolbar>
 
-    <ul class="navigation">
-        <li>
-            <a class="home" href="#!home"> <em>HOME</em></a>
-        </li>
-        <li>
+    <span>
+        <p id="homeBar">
+            <a class="home" href="#!home"> <em> HOME </em></a>
+        
+       
             <a class="time" href="#!entries"> <em> TIME ENTRY</em></a>
-        </li>
-        <li>
-            <a class="time" href="#!manPro"> <em> MANAGE PROJECTS</em></a>
-        </li>
-    </ul>
+    
+            <a class="manage" href="#!manPro"> <em> MANAGE PROJECTS</em></a>
+        </p>
+        </span>
+
 
 
     <ng-view></ng-view>

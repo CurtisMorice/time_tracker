@@ -2,28 +2,19 @@ const router = require('express').Router();
 const pool = require('../modules/pool');
 
 router.get('/', function(req, res) {
-    pool.connect(function(errorConnectingToDatabase, client, done) {
-        if (errorConnectingToDatabase) {
-            console.log('error', errorConnectingToDatabase);
-            res.sendStatus(500);
-        } else {
-            client.query('SELECT * FROM projects ORDER BY id;', function(errorMakingDatabaseQuery, result) {
-                done();
-                if (errorMakingDatabaseQuery) {
-                    console.log('error', errorMakingDatabaseQuery);
-                    res.sendStatus(500);
-                } else {
-                    res.send(result.rows);
-                }
-            });
-        }
+    const queryText = 'SELECT * FROM projects ORDER BY id DESC;';
+    pool.query(queryText).then((result) => {
+        res.send(result.rows);
+    }).catch((err) => {
+        console.log(`in router.get`, err);
+        res.sendStatus(500);
     });
 });
 
 router.post('/', (req, res) => {
     console.log('In manPro POST router ', req.body);
     let newEntry = req.body;
-    const queryText = `INSERT INTO projects ("project")
+    const queryText = `INSERT INTO "project" ("project")
 VALUES($1);`;
     pool.query(queryText, [newEntry.project])
         .then((result) => {
@@ -39,7 +30,7 @@ VALUES($1);`;
 router.put('/', (req, res) => {
     const entryId = req.params.id;
     console.log('in manPro.route PUT to update');
-    const queryText = 'UPDATE projects WHERE id-$1';
+    const queryText = 'UPDATE "entries" WHERE "id"=$1;';
     poll.query(queryText, [entryId])
         .then((result) => {
             res.sendStatus(200);
@@ -52,7 +43,7 @@ router.put('/', (req, res) => {
 router.delete('/:id', (req, res) => {
     const entryId = req.params.id;
     console.log('In manPro.route DELETE router ', req.params.id);
-    const queryText = 'DELETE FROM projects WHERE id=$1';
+    const queryText = 'DELETE FROM entries WHERE "id"=$1;';
     pool.query(queryText, [entryId])
         .then((result) => {
             console.log(`successful DELETE of manPro`, result);
