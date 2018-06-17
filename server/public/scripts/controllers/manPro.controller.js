@@ -16,16 +16,16 @@ TimeApp.controller('ManageController', ['TimeService', 'NgTableParams', function
     self.addProject = function() {
         let newProjects = new Projects(self.project);
         console.log(`in addProjects in manPro controller`, newProjects);
-        TimeService.postTime(newProjects).then(function(result) {
-            console.log(`successful addProject from manPro controller`, TimeService.postTime());
-        }).catch((err) => {
-            console.log(`Error in addProject on manPro.controller`, err);
+        TimeService.postTime('projects', newProjects).then(function(result) {
+            self.displayProjects();
+            console.log(`successful addProject from manPro controller`, result);
+
         });
     };
     self.displayProjects = function() {
         console.log(`in displayProjects in manPro.controller`);
-        TimeService.get('entries').then(function() {
-            self.getEntriesArray = TimeService.TimeArray;
+        TimeService.get('projects').then(function() {
+            self.projects = TimeService.TimeArray;
         }).catch(function(err) {
             console.log(`error in displayProjects in manPro.controller`);
         });
@@ -37,7 +37,7 @@ TimeApp.controller('ManageController', ['TimeService', 'NgTableParams', function
 
     self.deleteProjects = function() {
         console.log('in deleteProjects', entry);
-        TimeService.deleteTime('entries')
+        TimeService.deleteTime('projects')
             .then(function() {
                 self.displayProjects();
             }).catch(function(err) {

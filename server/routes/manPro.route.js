@@ -14,7 +14,7 @@ router.get('/', function(req, res) {
 router.post('/', (req, res) => {
     console.log('In manPro POST router ', req.body);
     let newEntry = req.body;
-    const queryText = `INSERT INTO "project" ("project")
+    const queryText = `INSERT INTO "projects" ("project")
 VALUES($1);`;
     pool.query(queryText, [newEntry.project])
         .then((result) => {

@@ -3,26 +3,22 @@
         <h1 class="toolbar">MANAGE YOUR PROJECTS HERE</h1>
     </md-toolbar>
     <div>
-        <input ng-model="vm.project" type="text" layout="row" placeholder="What did you do?">
+        <input ng-model="vm.project" type="text" layout="row" placeholder="Project Name?">
+
         <md-button ng-click="vm.addProject()">Add Project</md-button>
 
     </div>
     <div>
-        <table ng-table="vm.tableParams" show-filter="true" class="table table-bordered table-striped">
-            <tr ng-repeat="entry in vm.getEntriesArray">
+        <table ng-table="vm.tableParams" class="table table-bordered table-striped">
+            <tr ng-repeat="project in vm.projects">
                 <td>{{$index+1}}</td>
-                <td title="'What to Do'" filter="{project_id: 'number'}">
-                    {{entry.entry}}</td>
-                <td title="'Date'" filter="{date: 'text'}">
-                    {{entry.date}}</td>
-                <td title=" 'Hours' " filter="{hours: 'number'} ">
-                    {{entry.hours}}</td>
-                <td title="'Project ID'" filter="{project_id: 'number'}">
-                    {{entry.project_id}}</td>
+                <td title="'Project'">
+                    {{project.project}}</td>
+                <td title=" 'Hours'">
+                    {{project.project}}</td>
                 <td>
-                    <md-button type="button" ng-click="vm.deleteEntries(entry)">Delete</md-button>
+                    <md-button type="button " ng-click="vm.deleteEntries(entry) ">Delete</md-button>
                 </td>
-
             </tr>
         </table>
     </div>

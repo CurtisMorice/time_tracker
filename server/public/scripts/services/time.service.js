@@ -21,13 +21,13 @@ TimeApp.service('TimeService', function($http) {
     };
 
 
-    self.postTime = function(url) {
-        console.log(`in postTime`, url);
+    self.postTime = function(url, data) {
+        console.log(`in postTime`, data);
 
         return $http({
             method: 'POST',
             url: `/${url}`,
-            data: self.newTime
+            data: data
         }).then((response) => {
             console.log('back from POST with:', response);
         }).catch((error) => {
@@ -38,18 +38,18 @@ TimeApp.service('TimeService', function($http) {
 
 
 
-    self.updateTime = function(url) {
+    // self.updateTime = function(url) {
 
-        return $http({
-            method: 'PUT',
-            url: `/${url}`,
-            data: self.req.params
-        }).then((response) => {
-            console.log('back from POST with:', req.params);
-        }).catch((error) => {
-            console.log('back from POST with:', error);
-        });
-    };
+    //     return $http({
+    //         method: 'PUT',
+    //         url: `/${url}`,
+    //         data: self.req.params
+    //     }).then((response) => {
+    //         console.log('back from POST with:', req.params);
+    //     }).catch((error) => {
+    //         console.log('back from POST with:', error);
+    //     });
+    // };
 
     self.deleteTime = function(url, entry) {
         console.log('Delete!');
