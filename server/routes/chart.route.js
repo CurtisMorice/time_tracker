@@ -4,7 +4,7 @@ const pool = require('../modules/pool');
 
 
 router.get('/', function(req, res) {
-    const queryText = 'SELECT * FROM entries ORDER BY project_id DESC;';
+    const queryText = 'SELECT project, projects.id, SUM(hours) as hours FROM projects LEFT JOIN entries on project_id = projects.id GROUP BY projects.id ORDER BY projects.id ASC ;';
     pool.query(queryText).then((result) => {
         res.send(result.rows);
     }).catch((err) => {
