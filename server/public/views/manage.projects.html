@@ -8,23 +8,25 @@
         <md-button ng-click="vm.addProject()">Add Project</md-button>
 
     </div>
-    <div>
+    <div id="divRepeat">
         <table ng-table="vm.tableParams" class="table table-bordered table-striped">
             <tr ng-repeat="project in vm.projects">
+
+                <td>{{$index+1}}</td>
+                <td title="'Project'" class="projectP">
+                    {{project.project}}</td>
+                <td title=" 'Hours'" class="hourP">
+                    {{project.hours == null ? 0: project.hours;}}</td>
+                <td title="'MISTAKE?'" class="mistake">
+                    <md-input-container>
+                        <md-button class="background-primary-color" type="button" ng-click="vm.deleteProjects(this)">Destroy</md-button>
+                    </md-input-container>
+                </td>
                 <md-input-container>
-                    <td title="'EDIT PROJECT'">
-                        <md-button class="background-primary-color white-text" type="button" ng-click="vm.updateEntries(this)">UPDATE</md-button>
+                    <td title="'EDIT PROJECT'" class="edit">
+                        <md-button class=" background-primary-color white-text " type="button " ng-click="vm.updateEntries(this) ">UPDATE</md-button>
                     </td>
-                    <td>{{$index+1}}</td>
-                    <td title="'Project'">
-                        {{project.project}}</td>
-                    <td title=" 'Hours'">
-                        {{project.hours == null ? 0: project.hours;}}</td>
-                    <td title="'MISTAKE?'">
-                        <md-input-container>
-                            <md-button class="background-primary-color" type="button" ng-click="vm.deleteProjects(this)">PROJECTED</md-button>
-                        </md-input-container>
-                    </td>
+                </md-input-container>
             </tr>
         </table>
     </div>

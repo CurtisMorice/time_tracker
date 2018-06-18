@@ -16,7 +16,9 @@ TimeApp.controller('AddController', ['TimeService', 'NgTableParams', function(Ti
         console.log(`in addEntries in timeEntry controller`, newEntries);
         TimeService.postTime('entries', newEntries).then(function(result) {
             console.log(`successful addEntries from timeEntry controller`);
+            self.clearInputs();
             self.displayEntries();
+
         }).catch((err) => {
             console.log(`Error in addEntries on timeEntry.controller`, err);
         });
@@ -25,9 +27,18 @@ TimeApp.controller('AddController', ['TimeService', 'NgTableParams', function(Ti
         console.log(`in displayEntries in timeEntry.controller`);
         TimeService.get('entries').then(function() {
             self.getEntriesArray = TimeService.TimeArray;
+
         }).catch(function(err) {
             console.log(`error in displayEntries in timeEntry.controller`);
         });
+    };
+
+    self.clearInputs = function() {
+        self.entryIn = "";
+        self.dateIn = "";
+        self.hoursIn = "";
+        self.projectIn = "";
+
     };
 
     self.displayProjects = function() {
@@ -61,4 +72,5 @@ TimeApp.controller('AddController', ['TimeService', 'NgTableParams', function(Ti
     };
     self.displayEntries();
     self.displayProjects();
+
 }]);

@@ -1,13 +1,28 @@
 body {
+    background: linear-gradient(rgb(161, 110, 42), rgb(1, 45, 73));
+    font-family: 'Shrikhand', cursive;
+    font-size: 20px;
+}
+
+#divRepeat {
     background-color: rgb(64, 207, 255);
+    outline-color: gold;
+    font-size: 20px;
     font-family: 'Shrikhand', cursive;
 }
 
 .toolbar {
-    font: bold;
     font-family: 'Shrikhand', cursive;
     text-shadow: 9px 12px 2px rgba(188, 188, 188, 0.36);
     text-align: center;
+}
+
+#myChart {
+    background-color: rgb(255, 138, 71);
+    text-align: center;
+    font: bold;
+    font-size: 50px;
+    font-family: 'Shrikhand', cursive;
 }
 
 h1 a {
@@ -18,8 +33,10 @@ h1 a {
 }
 
 .chart {
-    color: black;
+    color: rgb(3, 3, 3);
     font-family: 'Shrikhand', cursive;
+    font-size: 50px;
+    text-align: center;
     text-shadow: 9px 12px 2px rgba(188, 188, 188, 0.36);
     letter-spacing: 1px;
     margin-bottom: 0;
@@ -27,6 +44,7 @@ h1 a {
 
 .time {
     color: whitesmoke;
+    font-size: 50px;
     font-family: 'Shrikhand', cursive;
     text-shadow: 9px 12px 2px rgba(188, 188, 188, 0.36);
     letter-spacing: 1px;
@@ -35,6 +53,7 @@ h1 a {
 
 .manage {
     color: darkorange;
+    font-size: 50px;
     font-family: 'Shrikhand', cursive;
     text-shadow: 9px 12px 2px rgba(188, 188, 188, 0.36);
     letter-spacing: 1px;
@@ -51,4 +70,48 @@ h1 a {
     font-family: 'Shrikhand', cursive;
     text-shadow: 9px 12px 2px rgba(188, 188, 188, 0.36);
     text-align: center;
+}
+
+.what {
+    background: linear-gradient(rgb(161, 110, 42), rgb(1, 45, 73));
+}
+
+.date {
+    background: linear-gradient(rgb(161, 110, 42), rgb(1, 45, 73));
+}
+
+.hours {
+    background: linear-gradient(rgb(161, 110, 42), rgb(1, 45, 73));
+}
+
+.order {
+    background: linear-gradient(rgb(161, 110, 42), rgb(1, 45, 73));
+}
+
+.project {
+    background: linear-gradient(rgb(161, 110, 42), rgb(1, 45, 73));
+}
+
+.completed {
+    background: linear-gradient(red, rgb(133, 133, 0));
+}
+
+.update {
+    background: linear-gradient(rgb(161, 110, 42), rgb(1, 45, 73));
+}
+
+.projectP {
+    background-color: lawngreen;
+}
+
+.hourP {
+    background-color: yellow;
+}
+
+.mistake {
+    background-color: red;
+}
+
+.edit {
+    background-color: hotpink;
 }

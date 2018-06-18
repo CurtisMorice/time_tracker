@@ -17,11 +17,20 @@ TimeApp.controller('ManageController', ['TimeService', 'NgTableParams', function
         let newProjects = new Projects(self.project);
         console.log(`in addProjects in manPro controller`, newProjects);
         TimeService.postTime('projects', newProjects).then(function(result) {
+            self.clearInputs();
             self.displayProjects();
             console.log(`successful addProject from manPro controller`, result);
 
         });
     };
+
+    self.clearInputs = function() {
+        self.project = "";
+    };
+
+
+
+
     self.displayProjects = function() {
         console.log(`in displayProjects in manPro.controller`);
         TimeService.get('projects').then(function() {

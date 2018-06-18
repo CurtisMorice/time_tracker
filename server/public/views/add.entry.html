@@ -1,4 +1,4 @@
-<div ng-controller="AddController as vm">
+<div ng-controller="AddController as vm" id="controller">
     <md-toolbar>
         <h1 class="toolbar">TIME ENTRY</h1>
     </md-toolbar>
@@ -23,27 +23,25 @@
             <md-button ng-click="vm.addEntries()">Add Project</md-button>
         </md-input-container>
     </div>
-    <div>
-
-
+    <div id="divRepeat">
         <table ng-table="vm.tableParams" class="table table-bordered table-striped">
             <tr ng-repeat="entry in vm.getEntriesArray">
                 <md-input-container>
-                    <td title="'EDIT TASK'">
+                    <td title="'EDIT TASK'" class="update">
                         <md-button type="button" ng-click="vm.updateEntries(this)">UPDATE</md-button>
                     </td>
                 </md-input-container>
-                <td title="'order #'">{{$index+1}}</td>
-                <td title="'Project'" sortable="'project'">
+                <td title="'order #'" class="order">{{$index+1}}</td>
+                <td title="'Project'" sortable="'project'" class="project">
                     {{entry.project}}</td>
-                <td title="'What to Do'" sortable="'entry'">
+                <td title="'What needs to be done?'" sortable="'entry'" class="what">
                     {{entry.entry}}</td>
-                <td title="'Date'" sortable="'date'">
+                <td title="'Date'" sortable="'date'" class="date">
                     {{entry.date | date: 'MM/dd/yyyy'}}</td>
-                <td title="'Hours'" sortable="'hours'">
+                <td title="'Hours'" sortable="'hours'" class="hours">
                     {{entry.hours}}</td>
                 <md-input-container>
-                    <td title="'Complete This Task'">
+                    <td title="'Complete This Task'" class="completed">
                         <md-button type="button" ng-click="vm.deleteEntries(this)">COMPLETED</md-button>
                     </td>
                 </md-input-container>
