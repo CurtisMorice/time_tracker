@@ -1,4 +1,4 @@
-TimeApp.controller('AddController', ['TimeService', 'NgTableParams', function(TimeService, NgTableParams) {
+TimeApp.controller('AddController', ['TimeService', 'NgTableParams', function(TimeService, NgTableParams, $filter, $scope) {
 
     let self = this;
     let data = [{ project_id: 1, date: '1/12/2018', hours: 3 }];
@@ -11,6 +11,16 @@ TimeApp.controller('AddController', ['TimeService', 'NgTableParams', function(Ti
             this.project_id = project_id;
         }
     }
+    self.sortData = function($defer, params) {
+
+        $scope.data = params.sorting() ? $filter('orderBy')($scope.entry, params.orderBy()) : $scope.entry;
+        $scope.data = $scope.data.slice((params.page() - 1) * params.count(), params.page() * params.count());
+
+        $defer.resolve($scope.data);
+
+
+    };
+
     self.addEntries = function() {
         let newEntries = new Entries(self.entryIn, self.dateIn, self.hoursIn, self.projectIn);
         console.log(`in addEntries in timeEntry controller`, newEntries);
@@ -50,10 +60,9 @@ TimeApp.controller('AddController', ['TimeService', 'NgTableParams', function(Ti
             console.log(`error in displayEntries in timeEntry.controller`);
         });
     };
-    self.updateEntries = function() {
-        console.log(`in updateEntries on timeEntry.controller`);
-        self.updatedEntry = req.params;
-        TimeService.updateTime('entries', updatedEntry).then(function(response) {
+    self.updateEntries = function(task) {
+        console.log(`in updateEntries on timeEntry.controller`, task.entry);
+        TimeService.updateTime('entries', task.entry).then(function(response) {
             console.log(`updated Entry in updateEntries in timeEntry.controller`, updatedEntry);
 
         });

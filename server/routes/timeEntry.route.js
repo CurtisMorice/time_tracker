@@ -30,7 +30,7 @@ VALUES($1, $2, $3, $4);`;
 router.put('/', (req, res) => {
     const entryId = req.params.id;
     console.log('in timeEntry PUT to update');
-    const queryText = 'UPDATE "entries" WHERE id = $1;';
+    const queryText = 'UPDATE "entries" SET entry = $2 SET date = $3 SET hours = $4 WHERE id = $1;';
     poll.query(queryText, [entryId])
         .then((result) => {
             res.sendStatus(200);
@@ -44,7 +44,7 @@ router.delete('/:id', (req, res) => {
     const entryId = req.params.id;
     console.log('In timeEntry.route DELETE ', req.params.id);
     const queryText = 'DELETE FROM "entries" WHERE id = $1;';
-    pool.query(queryText, [entryId])
+    pool.query(queryText, [entryId.entry, entryId.date, entryId.hours])
         .then((result) => {
             console.log(`successful DELETE of listing`, result);
             res.sendStatus(200);
