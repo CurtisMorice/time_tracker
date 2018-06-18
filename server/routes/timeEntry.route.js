@@ -28,12 +28,12 @@ VALUES($1, $2, $3, $4);`;
 }); // end POST
 
 router.put('/', (req, res) => {
-    const entryId = req.params.id;
+    const updateEntry = req.body;
     console.log('in timeEntry PUT to update');
-    const queryText = 'UPDATE "entries" SET entry = $2 SET date = $3 SET hours = $4 WHERE id = $1;';
-    poll.query(queryText, [entryId])
+    const queryText = 'UPDATE entries SET entry = $2, date = $3,hours = $4 WHERE id = $1;';
+    pool.query(queryText, [updateEntry.id, updateEntry.entry, updateEntry.date, updateEntry.hours])
         .then((result) => {
-            res.sendStatus(200);
+            res.status(200).send(result);
         }).catch((error) => {
             console.log(`Error in timeEntry PUT`, error);
             res.sendStatus(500);
@@ -44,7 +44,7 @@ router.delete('/:id', (req, res) => {
     const entryId = req.params.id;
     console.log('In timeEntry.route DELETE ', req.params.id);
     const queryText = 'DELETE FROM "entries" WHERE id = $1;';
-    pool.query(queryText, [entryId.entry, entryId.date, entryId.hours])
+    pool.query(queryText, [entryId])
         .then((result) => {
             console.log(`successful DELETE of listing`, result);
             res.sendStatus(200);

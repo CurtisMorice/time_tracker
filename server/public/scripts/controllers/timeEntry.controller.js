@@ -11,15 +11,15 @@ TimeApp.controller('AddController', ['TimeService', 'NgTableParams', function(Ti
             this.project_id = project_id;
         }
     }
-    self.sortData = function($defer, params) {
+    // self.sortData = function($defer, params) {
 
-        $scope.data = params.sorting() ? $filter('orderBy')($scope.entry, params.orderBy()) : $scope.entry;
-        $scope.data = $scope.data.slice((params.page() - 1) * params.count(), params.page() * params.count());
+    //     $scope.data = params.sorting() ? $filter('orderBy')($scope.entry, params.orderBy()) : $scope.entry;
+    //     $scope.data = $scope.data.slice((params.page() - 1) * params.count(), params.page() * params.count());
 
-        $defer.resolve($scope.data);
+    //     $defer.resolve($scope.data);
 
 
-    };
+    // };
 
     self.addEntries = function() {
         let newEntries = new Entries(self.entryIn, self.dateIn, self.hoursIn, self.projectIn);
@@ -61,9 +61,9 @@ TimeApp.controller('AddController', ['TimeService', 'NgTableParams', function(Ti
         });
     };
     self.updateEntries = function(task) {
-        console.log(`in updateEntries on timeEntry.controller`, task.entry);
-        TimeService.updateTime('entries', task.entry).then(function(response) {
-            console.log(`updated Entry in updateEntries in timeEntry.controller`, updatedEntry);
+        console.log(`in updateEntries on timeEntry.controller`, task);
+        TimeService.updateTime('entries', task).then(function(response) {
+            console.log(`updated Entry in updateEntries in timeEntry.controller`, response);
 
         });
     };

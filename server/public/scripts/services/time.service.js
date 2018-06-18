@@ -46,9 +46,10 @@ TimeApp.service('TimeService', function($http) {
             url: `/${url}`,
             data: task
         }).then((response) => {
-            console.log('back from POST with:', req.params);
+            console.log('back from PUT with:', response);
+            return response;
         }).catch((error) => {
-            console.log('back from POST with:', error);
+            console.log('back from PUT with:', error);
         });
     };
 

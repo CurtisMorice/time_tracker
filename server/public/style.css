@@ -77,6 +77,13 @@ h1 a {
     text-align: center;
 }
 
+.what,
+.date,
+.hours,
+.project {
+    margin: 50px;
+}
+
 .what {
     background: linear-gradient(rgb(161, 110, 42), rgb(1, 45, 73));
 }
@@ -87,6 +94,7 @@ h1 a {
 
 .hours {
     background: linear-gradient(rgb(161, 110, 42), rgb(1, 45, 73));
+    padding: 10px,
 }
 
 .order {

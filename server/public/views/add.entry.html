@@ -28,9 +28,9 @@
             <tr ng-repeat="entry in vm.getEntriesArray">
                 <md-input-container>
                     <td title="'EDIT TASK'" class="update">
-                        <md-button type="button" ng-click="vm.updateEntries(this)">UPDATE</md-button>
+                        <md-button type="button" ng-click="vm.updateEntries(entry)">UPDATE</md-button>
                     </td>
-                </md-input-container>
+                </md-input-container class="input">
                 <td title="'order #'" class="order">{{$index+1}}</td>
                 <td title="'Project'" sortable="'project'" class="project">
                     {{entry.project}}</td>
